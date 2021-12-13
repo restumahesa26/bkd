@@ -32,6 +32,10 @@
             margin-bottom: -3px;
             font-size: 20px;
         }
+
+        table tr td {
+            padding: 3px !important;
+        }
     </style>
 </head>
 <body>
@@ -50,7 +54,7 @@
         </div>
         <hr style="border: 2px solid #000; margin-top: -4px;">
         <h5 style="text-decoration: underline; font-weight: 800; text-underline-offset: 3px;" class="text-center">KEPUTUSAN REKTOR UNIVERSITAS BENGKULU</h5>
-        <h5 style="font-weight: 800; margin-top: -5px;" class="text-center">Nomor : 3303/UN30/HK/2020</h5>
+        <h5 style="font-weight: 800; margin-top: -5px;" class="text-center">Nomor : {{ $item->nomor_surat }}</h5>
         <div class="text-center mt-3">
             <h5 style="font-weight: 800; margin-bottom: -3px;">T E N T A N G</h5>
             <h5 style="font-weight: 800; margin-bottom: -3px;">PENGANGKATAN DOSEN PENGASUH MATA KULIAH DAN PRAKTIKUM</h5>

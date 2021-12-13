@@ -26,9 +26,6 @@
         <li class="dropdown @if (Route::is('sk.*')) active @endif">
             <a href="{{ route('sk.index') }}" class="nav-link"><i class="fas fa-fire"></i><span>SK</span></a>
         </li>
-        <li class="dropdown">
-            <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Pimpinan</span></a>
-        </li>
         @elseif (Auth::user()->role === 'DOSEN')
         <li class="dropdown @if (Route::is('kinerja.*')) active @endif">
             <a href="{{ route('kinerja.index') }}" class="nav-link"><i class="fas fa-fire"></i><span>Kinerja</span></a>

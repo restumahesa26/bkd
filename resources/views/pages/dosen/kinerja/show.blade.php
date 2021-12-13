@@ -36,17 +36,17 @@
                             <td>{{ $item->tugas_dalam_perkuliahan }}</td>
                             <td>{{ $item->sks_bagian }}</td>
                             <td>
-                                <a href="{{ route('mata-kuliah.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                <form action="{{ route('mata-kuliah.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('kinerja.edit-matkul', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <form action="{{ route('kinerja.destroy_matkul', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                 </form>
                             </td>
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="7">-- Data Kosong --</td>
+                            <td colspan="10">-- Data Kosong --</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -55,3 +55,31 @@
     </div>
 </div>
 @endsection
+
+@push('addon-script')
+    <script src="{{ url('js//sweetalert2.all.min.js') }}"></script>
+
+    <script>
+        $('.btn-hapus').on('click', function (e) {
+            e.preventDefault(); // prevent form submit
+            var form = event.target.form;
+            Swal.fire({
+            title: 'Yakin Menghapus Data?',
+            text: "Data Akan Terhapus Permanen",
+            icon: 'warning',
+            allowOutsideClick: false,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }else {
+                    //
+                }
+            });
+        });
+    </script>
+@endpush

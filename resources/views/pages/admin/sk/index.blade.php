@@ -58,7 +58,7 @@
                         <td>{{ $item2->user->nama }}</td>
                         <td>{{ $item2->user->dosen->nip }}</td>
                         <td>
-                            <a href="" class="btn btn-sm btn-primary">Cetak</a>
+                            <a href="{{ route('kinerja.cetak', $item2->id) }}" class="btn btn-sm btn-primary" target="_blank">Cetak</a>
                         </td>
                     </tr>
                     @empty

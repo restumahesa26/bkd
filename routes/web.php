@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware(['auth'])
@@ -58,9 +58,15 @@ Route::middleware(['auth', 'dosen'])
 
         Route::get('/kinerja/show-detail/{id}/tambah-matkul', [KinerjaController::class, 'tambah_matkul'])->name('kinerja.tambah-matkul');
 
+        Route::get('/kinerja/show-detail/edit-matkul/{id}', [KinerjaController::class, 'edit_matkul'])->name('kinerja.edit-matkul');
+
+        Route::put('/kinerja/show-detail/update-matkul/{id}', [KinerjaController::class, 'update_matkul'])->name('kinerja.update-matkul');
+
         Route::post('/kinerja/show-detail/tambah-matkul/store', [KinerjaController::class, 'store_matkul'])->name('kinerja.store-matkul');
 
         Route::delete('/kinerja/{id}/hapus', [KinerjaController::class, 'destroy'])->name('kinerja.destroy');
+
+        Route::delete('/kinerja/hapus-matkul/{id}', [KinerjaController::class, 'destroy_matkul'])->name('kinerja.destroy_matkul');
     });
 
 require __DIR__.'/auth.php';

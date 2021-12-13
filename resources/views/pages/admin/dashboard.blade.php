@@ -13,10 +13,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Dosen</h4>
                 </div>
                 <div class="card-body">
-                    10
+                    {{ $dosen }}
                 </div>
             </div>
         </div>
@@ -28,10 +28,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Mata Kuliah</h4>
                 </div>
                 <div class="card-body">
-                    42
+                    {{ $matkul }}
                 </div>
             </div>
         </div>
@@ -43,10 +43,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>SK Belum Diverifikasi</h4>
                 </div>
                 <div class="card-body">
-                    1,201
+                    {{ $skblm }}
                 </div>
             </div>
         </div>
@@ -58,10 +58,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>SK Sudah Diverifikasi</h4>
                 </div>
                 <div class="card-body">
-                    47
+                    {{ $sksdh }}
                 </div>
             </div>
         </div>

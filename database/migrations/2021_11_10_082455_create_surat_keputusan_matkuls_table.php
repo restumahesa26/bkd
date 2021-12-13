@@ -17,9 +17,9 @@ class CreateSuratKeputusanMatkulsTable extends Migration
             $table->id();
             $table->foreignId('surat_keputusan_id')->references('id')->on('surat_keputusans');
             $table->foreignId('mata_kuliah_id')->references('id')->on('mata_kuliahs');
-            $table->integer('jumlah_jam');
-            $table->enum('tugas_dalam_perkuliahan', ['Fasilitator','Narasumber','Tutor KKD','Pembimbing Praktikum']);
-            $table->integer('jumlah_mahasiswa');
+            $table->integer('jumlah_jam')->nullable();
+            $table->string('tugas_dalam_perkuliahan');
+            $table->integer('jumlah_mahasiswa')->nullable();
             $table->float('sks_bagian', 8,5);
             $table->timestamps();
         });

@@ -17,6 +17,10 @@
             html,
             body {
                 height: 100%;
+                background-image: url('{{ asset('images/landing-page.jpg')}}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
             }
 
             body {
