@@ -2,7 +2,7 @@
     <aside id="sidebar-wrapper">
       <div class="sidebar-brand">
         <img alt="image" src="{{ url('logo-unib.png') }}" style="width: 50px;">
-        <a href="index.html">FK UNIB</a>
+        <a href="index.html">FKIK UNIB</a>
       </div>
       <div class="sidebar-brand sidebar-brand-sm">
         <img alt="image" src="{{ url('logo-unib.png') }}" style="width: 50px;">
