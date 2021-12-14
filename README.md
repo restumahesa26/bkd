@@ -1,3 +1,6 @@
+![Screenshot 2021-12-14 155809](https://user-images.githubusercontent.com/58359912/145966483-a91f3339-7cc6-4b08-9dde-dc2e270f3db0.png)
+
+
 <h1>Sistem Informasi Beban Kerja Dosen Fakultas Kedokteran & Ilmu Kesehatan UNIB</h1>
 
 <h3>Cara Instal Program</h3>
