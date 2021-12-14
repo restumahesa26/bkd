@@ -16,8 +16,8 @@
         <style type="text/css" media="screen">
             html,
             body {
-                height: 100%;
-                background-image: url('{{ asset('images/landing-page.jpg')}}');
+                width: 100%;
+                background-image: url('{{ asset('images/BG1.jpg')}}');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
