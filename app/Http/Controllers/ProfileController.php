@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class ProfileController extends Controller
@@ -93,7 +94,7 @@ class ProfileController extends Controller
             $user->nama = $request->nama;
             $user->email = $request->email;
             if ($request->password) {
-                $user->password = $request->password;
+                $user->password = Hash::make($request->password);
             }
             $user->save();
 
