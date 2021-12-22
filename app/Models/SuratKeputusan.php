@@ -10,7 +10,7 @@ class SuratKeputusan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'nomor_surat', 'tanggal_berlaku_dari', 'tanggal_berlaku_sampai', 'tanggal_surat', 'status'
+        'user_id', 'nomor_surat', 'tanggal_berlaku_dari', 'tanggal_berlaku_sampai', 'tanggal_surat', 'status', 'status_verifikasi'
     ];
 
     public function user(){

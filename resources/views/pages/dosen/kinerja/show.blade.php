@@ -6,7 +6,9 @@
 </div>
 <div class="card">
     <div class="card-body">
+        @if ($sk->status_verifikasi == 0)
         <a href="{{ route('kinerja.tambah-matkul', $sk->id) }}" class="btn btn-primary mb-3">Tambah Mata Kuliah</a>
+        @endif
         <div class="table table-responsive">
             <table class="table table-bordered table-hover text-nowrap">
                 <thead>
@@ -82,4 +84,14 @@
             });
         });
     </script>
+
+    @if ($message = Session::get('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '{{ $message }}'
+        })
+    </script>
+    @endif
 @endpush

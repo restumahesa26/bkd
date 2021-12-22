@@ -12,7 +12,7 @@
         <li class="dropdown @if (Route::is('dashboard')) active @endif">
             <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
-        <li class="menu-header">Starter</li>
+        <li class="menu-header">{{ Auth::user()->role }}</li>
         <li class="dropdown @if (Route::is('profile.*')) active @endif">
             <a href="{{ route('profile.index') }}" class="nav-link"><i class="fas fa-fire"></i><span>Profile</span></a>
         </li>

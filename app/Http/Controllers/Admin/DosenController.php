@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dosen;
+use App\Models\SuratKeputusan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -73,7 +74,7 @@ class DosenController extends Controller
             'prodi' => $request->prodi,
         ]);
 
-        return redirect()->route('data-dosen.index');
+        return redirect()->route('data-dosen.index')->with(['success' => 'Berhasil Menambah Data Dosen']);
     }
 
     /**
@@ -155,11 +156,11 @@ class DosenController extends Controller
         $user->nama = $request->nama;
         $user->email = $request->email;
         if ($request->password) {
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
         }
         $user->save();
 
-        return redirect()->route('data-dosen.index');
+        return redirect()->route('data-dosen.index')->with(['success' => 'Berhasil Mengubah Data Dosen']);
     }
 
     /**
@@ -172,7 +173,13 @@ class DosenController extends Controller
     {
         $item = Dosen::findOrFail($id);
 
-        $item->delete();
-        return redirect()->route('data-dosen.index');
+        $check = SuratKeputusan::where('user_id', $item->user_id)->first();
+
+        if ($check) {
+            return redirect()->route('data-dosen.index')->with(['error' => 'Tidak Dapat Menghapus Data Dosen']);
+        } else {
+            $item->delete();
+            return redirect()->route('data-dosen.index')->with(['success' => 'Berhasil Menghapus Data Dosen']);
+        }
     }
 }

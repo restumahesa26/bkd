@@ -67,6 +67,8 @@ Route::middleware(['auth', 'dosen'])
         Route::delete('/kinerja/{id}/hapus', [KinerjaController::class, 'destroy'])->name('kinerja.destroy');
 
         Route::delete('/kinerja/hapus-matkul/{id}', [KinerjaController::class, 'destroy_matkul'])->name('kinerja.destroy_matkul');
+
+        Route::get('/kinerja/selesai/{id}', [KinerjaController::class, 'selesai'])->name('kinerja.selesai');
     });
 
 require __DIR__.'/auth.php';

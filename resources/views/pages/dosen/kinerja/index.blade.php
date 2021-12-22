@@ -36,6 +36,11 @@
                         <td>
                             @if ($item->status === 'Belum Diverifikasi')
                                 <a href="{{ route('kinerja.show-detail', $item->id) }}" class="btn btn-sm btn-primary">Lihat Matkul</a>
+                                @if ($item->status_verifikasi == 0)
+                                <a href="{{ route('kinerja.selesai', $item->id) }}" class="btn btn-sm btn-info btn-selesai">Selesai</a>
+                                @else
+
+                                @endif
                                 <form action="{{ route('kinerja.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -128,4 +133,37 @@
             });
         });
     </script>
+
+    <script>
+        $('.btn-selesai').on('click', function (event) {
+            event.preventDefault(); // prevent form submit
+            var form = $(this).attr('href');
+            Swal.fire({
+                title: 'Selesai Pilih Matkul?',
+                text: "Silahkan Menunggu Verifikasi",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = form;
+                }else {
+                    //
+                }
+            });
+        });
+    </script>
+
+    @if ($message = Session::get('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '{{ $message }}'
+        })
+    </script>
+    @endif
 @endpush

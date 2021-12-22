@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MataKuliah;
+use App\Models\SuratKeputusanMatkul;
 use Illuminate\Http\Request;
 
 class MataKuliahController extends Controller
@@ -54,7 +55,7 @@ class MataKuliahController extends Controller
             'semester' => $request->semester,
         ]);
 
-        return redirect()->route('mata-kuliah.index');
+        return redirect()->route('mata-kuliah.index')->with(['success' => 'Berhasil Menambah Data Mata Kuliah']);
     }
 
     /**
@@ -113,7 +114,7 @@ class MataKuliahController extends Controller
             'semester' => $request->semester,
         ]);
 
-        return redirect()->route('mata-kuliah.index');
+        return redirect()->route('mata-kuliah.index')->with(['success' => 'Berhasil Mengubah Data Mata Kuliah']);
     }
 
     /**
@@ -126,8 +127,13 @@ class MataKuliahController extends Controller
     {
         $item = MataKuliah::findOrFail($id);
 
-        $item->delete();
+        $check = SuratKeputusanMatkul::where('mata_kuliah_id', $id)->first();
 
-        return redirect()->route('mata-kuliah.index');
+        if ($check) {
+            return redirect()->route('mata-kuliah.index')->with(['error' => 'Tidak Dapat Menghapus Data Mata Kuliah']);
+        } else {
+            $item->delete();
+            return redirect()->route('mata-kuliah.index')->with(['success' => 'Berhasil Menghapus Data Mata Kuliah']);
+        }
     }
 }

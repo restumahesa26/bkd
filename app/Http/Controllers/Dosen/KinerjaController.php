@@ -54,6 +54,11 @@ class KinerjaController extends Controller
         $jmlMahasiswa = $request->jumlah_mahasiswa;
         $jmlJamFix = null;
 
+        $request->validate([
+            'mata_kuliah_id' => 'required',
+            'tugas_dalam_perkuliahan' => 'required'
+        ]);
+
         if ($request->tugas_dalam_perkuliahan == 'Narasumber Kuliah' || $request->tugas_dalam_perkuliahan == 'Narasumber Pleno' || $request->tugas_dalam_perkuliahan == 'Tutor' || $request->tugas_dalam_perkuliahan == 'Pembimbing Case Report' || $request->tugas_dalam_perkuliahan == 'Pembimbing Tutorial') {
             $request->validate([
                 'jumlah_jam' => 'required|numeric',
@@ -142,7 +147,7 @@ class KinerjaController extends Controller
             'sks_bagian' => $jmlJamFix
         ]);
 
-        return redirect()->route('kinerja.show-detail', $request->id);
+        return redirect()->route('kinerja.show-detail', $request->id)->with(['success' => 'Berhasil Menambah Mata Kuliah']);
     }
 
     public function edit_matkul($id)
@@ -252,7 +257,7 @@ class KinerjaController extends Controller
             'sks_bagian' => $jmlJamFix
         ]);
 
-        return redirect()->route('kinerja.show-detail', $idd);
+        return redirect()->route('kinerja.show-detail', $idd)->with(['success' => 'Berhasil Mengubah Mata Kuliah']);
     }
 
     public function destroy_matkul($id)
@@ -262,16 +267,18 @@ class KinerjaController extends Controller
 
         $item->delete();
 
-        return redirect()->route('kinerja.show-detail', $idd);
+        return redirect()->route('kinerja.show-detail', $idd)->with(['success' => 'Berhasil Menghapus Mata Kuliah']);
     }
 
     public function destroy($id)
     {
         $item = SuratKeputusan::findOrFail($id);
 
+        SuratKeputusanMatkul::where('surat_keputusan_id', $id)->delete();
+
         $item->delete();
 
-        return redirect()->route('kinerja.index');
+        return redirect()->route('kinerja.index')->with(['success' => 'Berhasil Menghapus Data Kinerja']);
     }
 
     public function cetak($id){
@@ -281,5 +288,15 @@ class KinerjaController extends Controller
         return view('pages.pdf.sk', [
             'item' => $item, 'item2' => $item2
         ]);
+    }
+
+    public function selesai($id)
+    {
+        $item = SuratKeputusan::findOrFail($id);
+
+        $item->status_verifikasi = 1;
+        $item->save();
+
+        return redirect()->route('kinerja.index')->with(['success' => 'Selesai Pengisian Mata Kuliah']);
     }
 }

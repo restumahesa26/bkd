@@ -11,7 +11,7 @@ class SKController extends Controller
 {
     public function index()
     {
-        $items = SuratKeputusan::where('status', 'Belum Diverifikasi')->get();
+        $items = SuratKeputusan::where('status', 'Belum Diverifikasi')->where('status_verifikasi', 1)->get();
         $items2 = SuratKeputusan::where('status', 'Sudah Diverifikasi')->orderBy('created_at', 'DESC')->get();
 
         return view('pages.admin.sk.index', [
@@ -34,6 +34,13 @@ class SKController extends Controller
     {
         $item = SuratKeputusan::findOrFail($id);
 
+        $request->validate([
+            'nomor_surat' => 'required|string|max:255',
+            'tanggal_berlaku_dari' => 'required|date',
+            'tanggal_berlaku_sampai' => 'required|date',
+            'tanggal_surat' => 'required|date',
+        ]);
+
         $item->update([
             'nomor_surat' => $request->nomor_surat,
             'tanggal_berlaku_dari' => $request->tanggal_berlaku_dari,
@@ -42,6 +49,6 @@ class SKController extends Controller
             'status' => 'Sudah Diverifikasi'
         ]);
 
-        return redirect()->route('sk.index');
+        return redirect()->route('sk.index')->with(['success' => 'Berhasil Memverifikasi Surat Keputusan']);
     }
 }
