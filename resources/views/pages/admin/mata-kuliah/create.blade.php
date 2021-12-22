@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="section-header">
+    <div class="d-flex justify-content-start">
+        <a href="{{ route('mata-kuliah.index') }}" class="btn btn-warning btn-sm mr-2">Kembali</a>
+    </div>
     <h1>Tambah Mata Kuliah</h1>
 </div>
 <div class="card">

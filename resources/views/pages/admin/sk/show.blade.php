@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="section-header">
+    <div class="d-flex justify-content-start">
+        <a href="{{ route('sk.index') }}" class="btn btn-warning btn-sm mr-2">Kembali</a>
+    </div>
     <h1>Surat Keputusan - {{ $item->user->nama }}</h1>
 </div>
 <div class="card">
@@ -48,20 +51,20 @@
             @method('PUT')
             <div class="form-group">
                 <label for="nomor_surat">Nomor Surat</label>
-                <input type="text" name="nomor_surat" id="nomor_surat" class="form-control" placeholder="Masukkan Nomor Surat" value="{{ old('nomor_surat') }}" required>
+                <input type="text" name="nomor_surat" id="nomor_surat" class="form-control @error('nomor_surat') is-invalid @enderror" placeholder="Masukkan Nomor Surat" value="{{ old('nomor_surat') }}" required>
             </div>
             <div class="row">
                 <div class="form-group col-lg-4">
                     <label for="tanggal_berlaku_dari">Tanggal Berlaku Dari</label>
-                    <input type="date" name="tanggal_berlaku_dari" id="tanggal_berlaku_dari" class="form-control" placeholder="Masukkan Tanggal Berlaku Dari" value="{{ old('tanggal_berlaku_dari') }}" required>
+                    <input type="date" name="tanggal_berlaku_dari" id="tanggal_berlaku_dari" class="form-control @error('tanggal_berlaku_dari') is-invalid @enderror" placeholder="Masukkan Tanggal Berlaku Dari" value="{{ old('tanggal_berlaku_dari') }}" required>
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="tanggal_berlaku_sampai">Tanggal Berlaku Sampai</label>
-                    <input type="date" name="tanggal_berlaku_sampai" id="tanggal_berlaku_sampai" class="form-control" placeholder="Masukkan Tanggal Berlaku Sampai" value="{{ old('tanggal_berlaku_sampai') }}" required>
+                    <input type="date" name="tanggal_berlaku_sampai" id="tanggal_berlaku_sampai" class="form-control @error('tanggal_berlaku_sampai') is-invalid @enderror" placeholder="Masukkan Tanggal Berlaku Sampai" value="{{ old('tanggal_berlaku_sampai') }}" required>
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="tanggal_surat">Tanggal Surat</label>
-                    <input type="date" name="tanggal_surat" id="tanggal_surat" class="form-control" placeholder="Masukkan Tanggal Surat" value="{{ old('tanggal_surat') }}" required>
+                    <input type="date" name="tanggal_surat" id="tanggal_surat" class="form-control @error('tanggal_surat') is-invalid @enderror" placeholder="Masukkan Tanggal Surat" value="{{ old('tanggal_surat') }}" required>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block btn-edit">Verifikasi</button>

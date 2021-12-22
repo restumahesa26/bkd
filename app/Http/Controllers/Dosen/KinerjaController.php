@@ -294,9 +294,15 @@ class KinerjaController extends Controller
     {
         $item = SuratKeputusan::findOrFail($id);
 
-        $item->status_verifikasi = 1;
-        $item->save();
+        $check = SuratKeputusanMatkul::where('surat_keputusan_id', $id)->first();
 
-        return redirect()->route('kinerja.index')->with(['success' => 'Selesai Pengisian Mata Kuliah']);
+        if ($check) {
+            $item->status_verifikasi = 1;
+            $item->save();
+
+            return redirect()->route('kinerja.index')->with(['success' => 'Selesai Pengisian Mata Kuliah']);
+        } else {
+            return redirect()->route('kinerja.index')->with(['error' => 'Silahkan Masukkan Mata Kuliah Terlebih dahulu']);
+        }
     }
 }

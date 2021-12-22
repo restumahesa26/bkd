@@ -25,6 +25,7 @@
                         <td>{{ $item->user->dosen->nip }}</td>
                         <td>
                             <a href="{{ route('sk.show', $item->id) }}" class="btn btn-sm btn-primary">Verifikasi</a>
+                            <a href="{{ route('sk.tolak', $item->id) }}" class="btn btn-sm btn-danger">Tolak</a>
                         </td>
                     </tr>
                     @empty

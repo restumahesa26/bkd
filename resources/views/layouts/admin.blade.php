@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>General Dashboard &mdash; Stisla</title>
+    <title>SI BKD FKIK</title>
+    <link rel="shortcut icon" href="{{ url('logo-unib.png') }}" />
 
     @include('includes.admin.style')
 

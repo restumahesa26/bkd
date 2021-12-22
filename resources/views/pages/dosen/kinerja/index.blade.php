@@ -31,7 +31,7 @@
                                 Belum Diverifikasi
                             @endif
                         </td>
-                        <td>{{ $item->tanggal_surat }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
                             @if ($item->status === 'Belum Diverifikasi')
@@ -162,6 +162,16 @@
         Swal.fire({
             icon: 'success',
             title: 'Berhasil',
+            text: '{{ $message }}'
+        })
+    </script>
+    @endif
+
+    @if ($message = Session::get('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
             text: '{{ $message }}'
         })
     </script>

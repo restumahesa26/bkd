@@ -46,6 +46,8 @@ Route::middleware(['auth', 'admin'])
         Route::get('/sk/{id}/detail', [SKController::class, 'show'])->name('sk.show');
 
         Route::put('/sk/{id}/detail/verifikasi', [SKController::class, 'verifikasi'])->name('sk.verifikasi');
+
+        Route::get('/sk/{id}/tolak', [SKController::class, 'tolak'])->name('sk.tolak');
     });
 
 Route::middleware(['auth', 'dosen'])

@@ -51,4 +51,15 @@ class SKController extends Controller
 
         return redirect()->route('sk.index')->with(['success' => 'Berhasil Memverifikasi Surat Keputusan']);
     }
+
+    public function tolak($id)
+    {
+        $item = SuratKeputusan::findOrFail($id);
+
+        $item->status = 'Belum Diverifikasi';
+        $item->status_verifikasi = 0;
+        $item->save();
+
+        return redirect()->route('sk.index')->with(['success' => 'Berhasil Menolak Verifikasi Surat Keputusan']);
+    }
 }
