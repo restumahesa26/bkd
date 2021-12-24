@@ -47,9 +47,7 @@
                                     <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                 </form>
                             @elseif ($item->status === 'Sudah Diverifikasi')
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCetak{{ $item->id }}">
-                                    Cetak
-                                </button>
+                                -
                             @endif
 
                         </td>
@@ -84,27 +82,6 @@
         </div>
     </div>
 </div>
-@foreach ($items as $item2)
-<div class="modal fade" id="modalCetak{{ $item2->id }}">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cetak SK Kinerja</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Yakin ingin mencetak SK Kinerja terbaru?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                <a href="{{ route('kinerja.cetak', $item2->id) }}" class="btn btn-primary" target="_blank">Ya</a>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 @endsection
 
 @push('addon-script')

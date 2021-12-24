@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dosen;
 
 use App\Http\Controllers\Controller;
 use App\Models\MataKuliah;
+use App\Models\Pimpinan;
 use App\Models\SuratKeputusan;
 use App\Models\SuratKeputusanMatkul;
 use Illuminate\Http\Request;
@@ -284,9 +285,10 @@ class KinerjaController extends Controller
     public function cetak($id){
         $item = SuratKeputusan::findOrFail($id);
         $item2 = SuratKeputusanMatkul::where('surat_keputusan_id', $id)->get();
+        $pimpinan = Pimpinan::first();
 
         return view('pages.pdf.sk', [
-            'item' => $item, 'item2' => $item2
+            'item' => $item, 'item2' => $item2, 'pimpinan' => $pimpinan
         ]);
     }
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="section-header">
+<div class="section-header justify-content-between">
     <h1>Surat Keputusan</h1>
 </div>
 <div class="card">

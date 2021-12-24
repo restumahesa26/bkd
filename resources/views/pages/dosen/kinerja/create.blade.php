@@ -36,7 +36,7 @@
                     <option value="Narasumber Kuliah" @if(old('tugas_dalam_perkuliahan') == 'Narasumber Kuliah') selected @endif>Narasumber Kuliah</option>
                     <option value="Narasumber Pleno" @if(old('tugas_dalam_perkuliahan') == 'Narasumber Pleno') selected @endif>Narasumber Pleno </option>
                     <option value="Fasilitator" @if(old('tugas_dalam_perkuliahan') == 'Fasilitator ') selected @endif>Fasilitator</option>
-                    <option value="Tutor" @if(old('tugas_dalam_perkuliahan') == 'Tutor') selected @endif>Tutor</option>
+                    <option value="Tutor" @if(old('tugas_dalam_perkuliahan') == 'Tutor') selected @endif>Tutor / Pembimbing Praktikum</option>
                     <option value="Tutor KKD" @if(old('tugas_dalam_perkuliahan') == 'Tutor KKD') selected @endif>Tutor KKD</option>
                     <option value="Penguji OSCE" @if(old('tugas_dalam_perkuliahan') == 'Penguji OSCE') selected @endif>Penguji OSCE</option>
                     <option value="Pembimbing Case Report" @if(old('tugas_dalam_perkuliahan') == 'Pembimbing Case Report') selected @endif>Pembimbing Case Report</option>

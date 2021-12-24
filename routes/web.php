@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\MataKuliahController;
 use App\Http\Controllers\Admin\SKController;
 use App\Http\Controllers\Dosen\KinerjaController;
+use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,8 @@ Route::middleware(['auth'])
 Route::middleware(['auth', 'admin'])
     ->group(function() {
         Route::resource('data-dosen', DosenController::class);
+
+        Route::resource('data-pimpinan', PimpinanController::class);
 
         Route::resource('mata-kuliah', MataKuliahController::class);
 

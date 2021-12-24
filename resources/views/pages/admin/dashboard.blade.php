@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="section-header">
-    <h1>{{ Auth::user()->nama }}</h1>
+    <h1>Halo, {{ Auth::user()->nama }}</h1>
 </div>
 @if (Auth::user()->role === 'ADMIN')
 <div class="row">
@@ -88,7 +88,7 @@
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <a href="{{ route('kinerja.index') }}">
             <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
+                <div class="card-icon bg-danger">
                     <i class="far fa-file"></i>
                 </div>
                 <div class="card-wrap">

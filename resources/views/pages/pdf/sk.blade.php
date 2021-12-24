@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style>
 
+        @page {
+            size: Legal;
+            margin: 0;
+        }
+
         body {
             font-family: 'Times New Roman';
         }
@@ -58,7 +63,7 @@
         <div class="text-center mt-3">
             <h5 style="font-weight: 800; margin-bottom: -3px;">T E N T A N G</h5>
             <h5 style="font-weight: 800; margin-bottom: -3px;">PENGANGKATAN DOSEN PENGASUH MATA KULIAH DAN PRAKTIKUM</h5>
-            <h5 style="font-weight: 800; margin-bottom: -3px;">SEMESTER GANJIL TAHUN AKADEMIK 2020 / 2021</h5>
+            <h5 style="font-weight: 800; margin-bottom: -3px;">SEMESTER {{ $pimpinan->semester }} TAHUN AKADEMIK {{ $pimpinan->tahun_akademik }}</h5>
             <h5 style="font-weight: 800; margin-bottom: -3px;">FAKULTAS KEDOKTERAN DAN ILMU KESEHATAN</h5>
             <h5 style="font-weight: 800; margin-bottom: -3px;">UNIVERSITAS BENGKULU</h5>
         </div>
@@ -69,7 +74,7 @@
             </div>
             <div class="col-11 pl-5">
                 <ol style="list-style-type: lower-alpha;">
-                    <li style="text-align: justify; margin-bottom: 5px;">bahwa untuk kelancaran kegiatan perkuliahan semester ganjil tahun akademik 2021/2021 di Universitas Bengkulu dipandang perlu mengangkat dosen pengasuh mata kuliah sesuai dengan keahliannya;</li>
+                    <li style="text-align: justify; margin-bottom: 5px;">bahwa untuk kelancaran kegiatan perkuliahan semester ganjil tahun akademik {{ $pimpinan->tahun_akademik }} di Universitas Bengkulu dipandang perlu mengangkat dosen pengasuh mata kuliah sesuai dengan keahliannya;</li>
                     <li style="text-align: justify; margin-bottom: 5px;">bahwa dosen pengasuh mata kuliah yang tercantum dalam surat keputusan ini dianggap cakap dan mampu untuk melaksanakan tugas yang diembankan;</li>
                     <li style="text-align: justify; margin-bottom: 5px;">bahwa untuk keperluan sebagaimana tersebut pada butir (a) dan (b) di atas perlu ditetapkan dengan keputusan Rektor;</li>
                 </ol>
@@ -138,7 +143,7 @@
                         <td style="border: 1px #000 solid;">{{ $item3->mata_kuliah->nama_mata_kuliah }}</td>
                         <td style="border: 1px #000 solid;">{{ $item3->mata_kuliah->semester }}</td>
                         <td style="border: 1px #000 solid;">{{ $item3->mata_kuliah->sks }}</td>
-                        <td style="border: 1px #000 solid;">{{ $item3->sks_bagian }}</td>
+                        <td style="border: 1px #000 solid;">{{ number_format($item3->sks_bagian, 3) }}</td>
                         <td style="border: 1px #000 solid;">{{ $item3->jumlah_jam }}</td>
                         <td style="border: 1px #000 solid;">{{ $item3->jumlah_mahasiswa }}</td>
                         <td style="border: 1px #000 solid;">{{ $item3->tugas_dalam_perkuliahan }}</td>
@@ -148,7 +153,7 @@
                 <tfoot>
                     <tr class="text-center">
                         <td colspan="5">Total SKS Mengajar</td>
-                        <td colspan="9">{{ $totalSKSBagian }}</td>
+                        <td colspan="9">{{ number_format($totalSKSBagian, 3) }}</td>
                     </tr>
                 </tfoot>
             </table>
@@ -167,8 +172,8 @@
             <h5>Ditetapkan di Bengkulu</h5>
             <h5>Pada Tanggal {{ Carbon\Carbon::parse($item->tanggal_surat)->format('d F Y') }}</h5>
             <h5>REKTOR UNIVERSITAS BENGKULU</h5>
-            <h5 style="margin-top: 100px;">RIDWAN NURAZI</h5>
-            <h5>NIP 196009151989031004</h5>
+            <h5 style="margin-top: 100px;">{{ $pimpinan->nama }}</h5>
+            <h5>NIP {{ $pimpinan->nip }}</h5>
         </div>
     </div>
 </body>

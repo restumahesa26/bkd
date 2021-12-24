@@ -39,7 +39,7 @@
                             <td>{{ $item->jumlah_mahasiswa }}</td>
                             <td>{{ $item->jumlah_jam }}</td>
                             <td>{{ $item->tugas_dalam_perkuliahan }}</td>
-                            <td>{{ $item->sks_bagian }}</td>
+                            <td>{{ number_format($item->sks_bagian, 3) }}</td>
                             <td>
                                 <a href="{{ route('kinerja.edit-matkul', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                 <form action="{{ route('kinerja.destroy_matkul', $item->id) }}" method="POST" class="d-inline">
